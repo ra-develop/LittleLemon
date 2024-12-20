@@ -1,4 +1,4 @@
-# The final project assessment for the Meta™ iOS Developer Professional Certificate from ©Coursera.org
+# The final project assessment for the Meta™ iOS Developer Professional Certificate from Coursera.org©
 
 ## The purpose of the graded assessment
 
