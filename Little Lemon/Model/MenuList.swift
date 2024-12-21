@@ -9,18 +9,19 @@ struct MenuList: Codable {
     }
     
 }
-
-
-struct MenuItem: Codable, Identifiable {
-    let id = UUID()
-    
-    // add code here
-    let title: String
-    let price: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case price = "price"
-    }
-    
-}
+ /*
+  
+  {
+    "menu": [
+      {
+        "id": 1,
+        "title": "Greek Salad",
+        "description": "The famous greek salad of crispy lettuce, peppers, olives, our Chicago.",
+        "price": "10",
+        "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true",
+        "category": "starters"
+      },
+      ]
+  }
+  
+  */

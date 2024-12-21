@@ -9,12 +9,12 @@ import SwiftUI
 
 struct Menu: View {
     var body: some View {
-        VStack{
+        VStack {
             Text("Little Lemon App")
             Text("Chicago")
             Text("Short description of the whole application")
             List {
-                
+
             }
         }
     }
