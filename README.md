@@ -14,7 +14,7 @@ The graded assessment will task you with creating a food-ordering app for the Li
 
 ![Little Lemon mobile app screens of profile page and home screen with menu items](Little-Lemon-mobile-app-screens.png)
 
-You will be provided with some starter code that establishes the app layout; however, it is missing the list of menu items. You will need to make a network call to **fetch this data** from a URL that is provided in the task instructions. Once retrieved, this data should then **be stored in a database**.
+You will need to make a network call to **fetch this data** from a URL that is provided in the task instructions. Once retrieved, this data should then **be stored in a database**.
 
 In order to **display the data within the app**, you will need to write some code that converts the data into a proper format for SwiftUI. Finally, you will implement some SQL transactions to **enable the sorting and filtering of the data**.
 
