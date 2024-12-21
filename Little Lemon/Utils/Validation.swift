@@ -18,4 +18,8 @@ class Validation {
     func name(name: String) -> Bool {
         return !name.isEmpty && name.count >= 2
     }
+    
+    func password(password: String, passwordRepeated: String) -> Bool {
+        return password == passwordRepeated && !password.isEmpty && password.count >= 5 && password.count <= 32
+    }
 }
