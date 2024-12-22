@@ -7,7 +7,7 @@ extension Dish {
     static func createDishesFrom(menuItems:[MenuItem],
                                  _ context:NSManagedObjectContext) {
         menuItems.forEach { item in
-            if let isItemExist = self.exists(name: item.title, context) {
+            if let isItemExist = self.exists(title: item.title, context) {
                 if !isItemExist {
                     let dish = Dish(context: context)
                     dish.title = item.title

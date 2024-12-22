@@ -9,65 +9,60 @@ import SwiftUI
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
+    @State var searchText = ""
+    @ObservedObject var dishesModel = DishesModel()
+
 
     var body: some View {
         VStack {
             Text("Little Lemon App")
             Text("Chicago")
             Text("Short description of the whole application")
-            FetchedObjects() { (dishes: [Dish]) in
-                List {
-                    ForEach(dishes) { dish in
-                        HStack(alignment: .center) {
-                            Text(dish.title ?? "")
-                            Spacer()
-                            Text(dish.formatPrice()).font(Font.system(.callout, design: .monospaced))
+            NavigationView {
+                FetchedObjects(
+                    predicate: buildPredicate(),
+                    sortDescriptors: buildSortDescriptors()
+                ) { (dishes: [Dish]) in
+                    List {
+                        ForEach(dishes, id: \.self) { dish in
+                            
+                            NavigationLink(
+                                destination: {
+                                    DisplayDishDetail(dish)
+                                },
+                                label: {
+                                    DisplayMenuItem(dish)
+                                })
                         }
                     }
+                    .searchable(text: $searchText, prompt: "search...")
+                    
                 }
-                
             }
         }
-        .onAppear() {
-            getMenuData()
+        .task {
+            await dishesModel.reload(viewContext)
         }
     }
-    
-    func getMenuData(){
-        let urlString = "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
-        let url = URL(string: urlString)!
-        
-        let request = URLRequest(url: url)
-        let urlSession = URLSession.shared
-        
-        
-        let dataTask = urlSession.dataTask(with: request) { data, response, error in
-            if let data = data {
-                do {
-                    PersistenceController.shared.clear()
-                    try? viewContext.save()
-                    let fullMenu = try JSONDecoder().decode(MenuList.self, from: data)
-                    let menuItems = fullMenu.menu
-                    menuItems.forEach {menuItem in
 
-                        let dish = Dish(context: viewContext)
-                        dish.title = menuItem.title
-                        dish.price = (menuItem.price as NSString).floatValue
-                        dish.category = menuItem.category
-                        dish.descript = menuItem.description
-                        dish.image = menuItem.image
-                        
-                    }
-                    try? viewContext.save()
-
-                } catch { }
-            }
+    func buildPredicate() -> NSPredicate {
+        if searchText.isEmpty {
+            return NSPredicate(value: true)
+            // NSPredicate(format: "TRUEPREDICATE")
+        } else {
+            return NSPredicate(format: "title CONTAINS[cd] %@", searchText)
         }
-
-        dataTask.resume()
-
     }
+
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(
+                key: "title",
+                ascending: true,
+                selector: #selector(NSString.localizedCaseInsensitiveCompare))
+        ]
+    }
+
 }
 
 #Preview {
@@ -75,7 +70,7 @@ struct Menu: View {
 }
 
 /*
- 
+
  Step 8: Displaying the list of menu items from the database
  Update the List element of the Menu view to display the Dish items that were saved to the database.
 
@@ -96,5 +91,5 @@ struct Menu: View {
  Images might be too big, so you will have to style them to resize them. You can read about the AsyncImage styling
  here
  .
- 
+
  */

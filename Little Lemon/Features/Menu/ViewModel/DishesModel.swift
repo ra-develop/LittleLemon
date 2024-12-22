@@ -9,12 +9,12 @@ class DishesModel: ObservableObject {
         
     
     func reload(_ coreDataContext:NSManagedObjectContext) async {
-        let url = URL(string: "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/littleLemonSimpleMenu.json")!
+        let url = URL(string: "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json")!
         let urlSession = URLSession.shared
         
         do {
             let (data, _) = try await urlSession.data(from: url)
-            let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data)
+            let fullMenu = try JSONDecoder().decode(MenuList.self, from: data)
             menuItems = fullMenu.menu
             
             
@@ -52,7 +52,7 @@ extension URLSession {
         }
     }
     
-    func itemsTask(with url: URL, completionHandler: @escaping (JSONMenu?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func itemsTask(with url: URL, completionHandler: @escaping (MenuList?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return self.codableTask(with: url, completionHandler: completionHandler)
     }
 }
