@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum NavigationDestinations: String, CaseIterable, Hashable {
+    case Onboarding
+    case Home
+    case UserProfile
+}
+
 struct ContentView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Onboarding()
         }
     }

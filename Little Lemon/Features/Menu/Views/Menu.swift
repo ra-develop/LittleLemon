@@ -12,12 +12,9 @@ struct Menu: View {
     @State var searchText = ""
     @ObservedObject var dishesModel = DishesModel()
 
-
     var body: some View {
         VStack {
-            Text("Little Lemon App")
-            Text("Chicago")
-            Text("Short description of the whole application")
+            Text("Place for selecting the categories")
             NavigationView {
                 FetchedObjects(
                     predicate: buildPredicate(),
@@ -39,6 +36,7 @@ struct Menu: View {
                     
                 }
             }
+            Spacer()
         }
         .task {
             await dishesModel.reload(viewContext)
@@ -66,7 +64,10 @@ struct Menu: View {
 }
 
 #Preview {
+    let persistenceController = PersistenceController.shared
+
     Menu()
+        .environment(\.managedObjectContext, persistenceController.container.viewContext)
 }
 
 /*
