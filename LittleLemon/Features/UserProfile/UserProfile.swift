@@ -28,7 +28,6 @@ struct UserProfile: View {
     @State var isLoggedOut: Bool = false
 
     var body: some View {
-        //        NavigationStack {
         VStack {
             HStack {
                 Spacer()
@@ -73,7 +72,6 @@ struct UserProfile: View {
                     "Password", text: $password
                 )
                 .onChange(of: password) {
-                    // Add validation of password
                     print("password is change")
                     isPaswordChaged = true
                     passwordRepeated = ""
@@ -88,7 +86,6 @@ struct UserProfile: View {
                         "Repeat Password", text: $passwordRepeated
                     )
                     .onChange(of: passwordRepeated) {
-                        // Add validation of repeated password
                         print(passwordRepeated)
                         validationCheck()
                     }
@@ -109,7 +106,6 @@ struct UserProfile: View {
             Spacer()
         }
         .textFieldStyle(.roundedBorder)
-//        .padding()
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Personal information")
         .toolbar {
@@ -128,7 +124,6 @@ struct UserProfile: View {
             destination: {
                 Onboarding()
             })
-        //        }
 
     }
 

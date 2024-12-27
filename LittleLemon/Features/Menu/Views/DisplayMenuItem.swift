@@ -13,7 +13,6 @@ struct DisplayMenuItem: View {
     }
     
     var body: some View {        
-//        EmptyView()
         HStack(alignment: .center) {
             Text(dish.title ?? "")
             Spacer()

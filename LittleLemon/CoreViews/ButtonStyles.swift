@@ -25,7 +25,6 @@ struct ControlButton: ButtonStyle {
         isDisabled = !isActive!
     }
     func makeBody(configuration: Configuration) -> some View {
-        //        if isActive {
         configuration.label
             .frame(width: 142, height: 30, alignment: .center)
             .padding()

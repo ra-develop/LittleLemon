@@ -19,7 +19,6 @@ class DishesModel: ObservableObject {
             
             
             // populate Core Data
-//            Dish.deleteAll(coreDataContext)
             Dish.createDishesFrom(menuItems:menuItems, coreDataContext)
         }
         catch { }
