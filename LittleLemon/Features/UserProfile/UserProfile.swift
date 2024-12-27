@@ -29,81 +29,87 @@ struct UserProfile: View {
 
     var body: some View {
         //        NavigationStack {
-        VStack(alignment: .leading) {
+        VStack {
             HStack {
                 Spacer()
                 Image("profile-image-placeholder")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 140)
+                    .frame(height: 170)
+                    .cornerRadius(85)
                 Spacer()
             }
-            Text("First name")
-            TextField(
-                "First Name", text: $firstName
-            )
-            .disableAutocorrection(true)
-            .onChange(of: firstName) {
-                validationCheck()
-
-            }
-            Text("Last name").padding(.top)
-            TextField(
-                "Last Name", text: $lastName
-            )
-            .disableAutocorrection(true)
-            .onChange(of: lastName) {
-                validationCheck()
-            }
-            Text("Email").padding(.top)
-            TextField(
-                "Email", text: $email
-            )
-            .disableAutocorrection(true)
-            .onChange(of: email) {
-                validationCheck()
-
-            }
-            Text("Password").padding(.top)
-            SecureField(
-                "Password", text: $password
-            )
-            .onChange(of: password) {
-                // Add validation of password
-                print("password is change")
-                isPaswordChaged = true
-                passwordRepeated = ""
-            }
-            .onSubmit {
-                validationCheck()
-
-            }
-
-            if isPaswordChaged {
-                SecureField(
-                    "Repeat Password", text: $passwordRepeated
+            .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+            .background(.primaryColors1, ignoresSafeAreaEdges: .horizontal)
+            VStack(alignment: .leading) {
+                Text("First name")
+                TextField(
+                    "First Name", text: $firstName
                 )
-                .onChange(of: passwordRepeated) {
-                    // Add validation of repeated password
-                    print(passwordRepeated)
+                .disableAutocorrection(true)
+                .onChange(of: firstName) {
+                    validationCheck()
+                    
+                }
+                Text("Last name").padding(.top)
+                TextField(
+                    "Last Name", text: $lastName
+                )
+                .disableAutocorrection(true)
+                .onChange(of: lastName) {
                     validationCheck()
                 }
+                Text("Email").padding(.top)
+                TextField(
+                    "Email", text: $email
+                )
+                .disableAutocorrection(true)
+                .onChange(of: email) {
+                    validationCheck()
+                    
+                }
+                Text("Password").padding(.top)
+                SecureField(
+                    "Password", text: $password
+                )
+                .onChange(of: password) {
+                    // Add validation of password
+                    print("password is change")
+                    isPaswordChaged = true
+                    passwordRepeated = ""
+                }
+                .onSubmit {
+                    validationCheck()
+                    
+                }
+                
+                if isPaswordChaged {
+                    SecureField(
+                        "Repeat Password", text: $passwordRepeated
+                    )
+                    .onChange(of: passwordRepeated) {
+                        // Add validation of repeated password
+                        print(passwordRepeated)
+                        validationCheck()
+                    }
+                }
+                HStack(alignment: .center) {
+                    Button(action: saveChanges) {
+                        Text("Save changes")
+                    }
+                    .buttonStyle(ChangeButton())
+                    Spacer()
+                    Button(action: logOut) {
+                        Text("Logout")
+                    }
+                    .buttonStyle(ControlButton())
+                }.padding(.top)
             }
-            HStack(alignment: .center) {
-                Button(action: saveChanges) {
-                    Text("Save changes")
-                }
-                .buttonStyle(ChangeButton())
-                Spacer()
-                Button(action: logOut) {
-                    Text("Logout")
-                }
-                .buttonStyle(ControlButton())
-            }.padding(.top)
+            .padding()
             Spacer()
         }
         .textFieldStyle(.roundedBorder)
-        .padding()
+//        .padding()
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Personal information")
         .toolbar {

@@ -73,6 +73,8 @@ struct Menu: View {
                     }
                 }
                 .searchable(text: $searchText, prompt: "search...")
+                .navigationTitle("Order for delivery!")
+                .navigationBarTitleDisplayMode(.large)
             }
 
         }
@@ -85,8 +87,8 @@ struct Menu: View {
                         Category(name: $0.category ?? "", status: false)
                     }))
         }
-        .navigationTitle("List")
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationTitle("List")
+//        .navigationBarTitleDisplayMode(.large)
     }
 
     var compoundPredicate: NSPredicate {

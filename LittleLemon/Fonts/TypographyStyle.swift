@@ -12,10 +12,10 @@ enum TypographyStyle {
     private var fontName: String {
         switch self {
         case .headline:
-            return "MarkaziText"
+            return "Markazi Text"
             
         case .subheadline:
-            return "MarkaziText"
+            return "Markazi Text"
             
         case .title:
             return "Karla"
@@ -24,7 +24,7 @@ enum TypographyStyle {
             return "Karla"
             
         case .title3:
-            return "KarlaItalic"
+            return "Karla"
             
         }
     }
@@ -52,10 +52,10 @@ enum TypographyStyle {
     private var fontSize: CGFloat {
         switch self {
         case .headline:
-            return 32
+            return 44
             
         case .subheadline:
-            return 28
+            return 32
             
         case .title:
             return 24

@@ -14,18 +14,27 @@ struct Home: View {
 
     var body: some View {
         NavigationStack {
-            HStack(alignment: .top) {
+            HStack(alignment: .top, spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("Little Lemon")
-                        .font(Font.custom("MarkaziText", size: 32))
-//                        .typographyStyle(.headline)
+                        .typographyStyle(.headline)
+                        .foregroundStyle(.yellow)
                     Text("Chicago")
+                        .typographyStyle(.subheadline)
+                        .foregroundStyle(.white)
                     Text("Little Lemon is a charming neighborhood bistro thatserves simple food and  classic cocktails in a lively but casual environment. The restaurant features a locally-sourced menu with daily specials.")
+                        .typographyStyle(.title3)
+                        .foregroundStyle(.white)
+
                 }
                 Image("Hero image")                    .resizable()
                     .frame(width: 140, height: 170)
-                    .scaledToFit()
-            }.padding(.horizontal, 20)
+                    .scaledToFill()
+                    .cornerRadius(20)
+                    .padding(.top, 10)
+            }
+            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+            .background(.primaryColors1, ignoresSafeAreaEdges: .horizontal)
             Menu()
                 .environment(
                     \.managedObjectContext,

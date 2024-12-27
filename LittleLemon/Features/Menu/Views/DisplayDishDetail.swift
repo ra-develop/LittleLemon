@@ -14,30 +14,44 @@ struct DisplayDishDetail: View {
     }
     
     var body: some View {
-        VStack{
-            AsyncImage(url: URL(string: dish.image!)){ phase in
-                switch phase {
-                case .failure:
-                    Image(systemName: "photo.badge.exclamationmark")
-                        .font(.largeTitle)
-                case .success(let image):
-                    image
-                        .resizable()
-                default:
-                    ProgressView()
+        GeometryReader {proxy in
+            VStack(spacing: 20) {
+                HStack {
+                    AsyncImage(url: URL(string: dish.image!)){ phase in
+                        switch phase {
+                        case .failure:
+                            Image(systemName: "photo.badge.exclamationmark")
+                                .font(.largeTitle)
+                        case .success(let image):
+                            image
+                                .resizable()
+                        default:
+                            ProgressView()
+                        }
+                    }
+                    .frame(width: 256, height: 256)
+                    .cornerRadius(25)
+                    //                .clipShape(.rect(cornerRadius: 25))
+                }
+                .frame(width: proxy.size.width , height: 300)
+                .background(.primaryColors1, ignoresSafeAreaEdges: .horizontal)
+                VStack(alignment: .leading ) {
+                    Text(dish.title!).typographyStyle(.headline)
+                    Text(dish.descript!).typographyStyle(.subheadline)
+                    HStack {
+                        Text(dish.category!).typographyStyle(.title2)
+                        Spacer()
+                        Text(dish.formatPrice())
+                            .typographyStyle(.subheadline)
+                    }
+                }.padding()
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("Logo")
                 }
             }
-            .frame(width: 256, height: 256)
-            .clipShape(.rect(cornerRadius: 25))
-            Text(dish.title!)
-            Text(dish.descript!)
-            HStack {
-                Text(dish.category!)
-                Spacer()
-                Text(dish.formatPrice()).font(Font.system(.callout, design: .monospaced))
-            }.padding()
-            
-        }.padding()
+        }
     }
 }
 
