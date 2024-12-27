@@ -11,9 +11,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		115FB2942D13564300FF9ED0 /* Little Lemon */ = {
+		115FB2942D13564300FF9ED0 /* LittleLemon */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Little Lemon";
+			path = LittleLemon;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		115FB2892D13564300FF9ED0 = {
 			isa = PBXGroup;
 			children = (
-				115FB2942D13564300FF9ED0 /* Little Lemon */,
+				115FB2942D13564300FF9ED0 /* LittleLemon */,
 				115FB2932D13564300FF9ED0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				115FB2942D13564300FF9ED0 /* Little Lemon */,
+				115FB2942D13564300FF9ED0 /* LittleLemon */,
 			);
 			name = "Little Lemon";
 			packageProductDependencies = (
@@ -251,10 +251,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Little Lemon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LittleLemon/Preview Content\"";
 				DEVELOPMENT_TEAM = AGV53XD2D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Little-Lemon-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,10 +281,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Little Lemon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LittleLemon/Preview Content\"";
 				DEVELOPMENT_TEAM = AGV53XD2D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Little-Lemon-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
