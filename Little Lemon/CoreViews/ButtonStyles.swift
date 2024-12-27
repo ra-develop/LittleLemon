@@ -39,18 +39,6 @@ struct ControlButton: ButtonStyle {
                     .stroke(borderStrokeColor, lineWidth: 2)
             )
             .disabled(isDisabled)
-        //        } else {
-        //            configuration.label
-        //                .frame(width: 182, height: 30, alignment: .center)
-        //                .padding()
-        //                .foregroundStyle(.gray)
-        //                .font(.title2)
-        //                .cornerRadius(15) /// make the background rounded
-        //                .overlay( /// apply a rounded border
-        //                    RoundedRectangle(cornerRadius: 15)
-        //                        .stroke(Color(.gray), lineWidth: 2)
-        //                )
-        //        }
 
     }
 }
@@ -67,7 +55,38 @@ struct ChangeButton: ButtonStyle {
             .overlay(
                 /// apply a rounded border
                 RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color(.primaryColors1), lineWidth: 5)
+                    .stroke(Color(.primaryColors1), lineWidth: 2)
+            )
+    }
+}
+
+struct CategoryButton: ButtonStyle {
+    private var foreGroundColor = Color(.highlightColors2)
+    private var backGoundColor = Color(.highlightColors1)
+    private var borderStrokeColor = Color(.highlightColors1)
+    init(isActive: Bool? = false) {
+        if isActive! {
+            self.foreGroundColor = Color(.highlightColors2)
+            self.backGoundColor = Color(.highlightColors1)
+            self.borderStrokeColor = Color(.highlightColors1)
+        } else {
+            self.foreGroundColor = Color(.gray)
+            self.backGoundColor = Color(.clear)
+            self.borderStrokeColor = Color(.gray)
+        }
+    }
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: 80, height: 10, alignment: .center)
+            .padding()
+            .foregroundStyle(foreGroundColor)
+            .font(.body)
+            .background(Color(backGoundColor))
+            .cornerRadius(10)/// make the background rounded
+            .overlay(
+                /// apply a rounded border
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(borderStrokeColor), lineWidth: 2)
             )
     }
 }
@@ -93,4 +112,14 @@ struct ChangeButton: ButtonStyle {
         print("Is pressed Change")
     }
     .buttonStyle(ChangeButton())
+
+    Button("Category") {
+        print("Is pressed Change")
+    }
+    .buttonStyle(CategoryButton())
+
+    Button("Category") {
+        print("Is pressed Change")
+    }
+    .buttonStyle(CategoryButton(isActive: true))
 }

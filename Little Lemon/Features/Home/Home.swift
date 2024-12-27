@@ -11,14 +11,27 @@ struct Home: View {
     let persistenceController = PersistenceController.shared
     @State var presentUserProfile = false
     @State var presentDetail = false
-    
+
     var body: some View {
-        VStack {
-            Text("Little Lemon App")
-            Text("Chicago")
-            Text("Short description of the whole application")
+        NavigationStack {
+            VStack {
+                Text("Little Lemon App")
+                Text("Chicago")
+                Text(
+                    """
+                    1. Short description of the whole application
+                    2. Short description of the whole application
+                    3. Short description of the whole application
+                    4. Short description of the whole application
+                    5. Short description of the whole application
+                    """)
+            }
             Menu()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(
+                    \.managedObjectContext,
+                    persistenceController.container.viewContext
+                )
+
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Image("Logo")
@@ -34,14 +47,17 @@ struct Home: View {
                         }
                     }
                 }
-                .navigationBarBackButtonHidden(true)
-            
-                .navigationDestination(isPresented: $presentUserProfile, destination: {
-                    UserProfile()
-                })
-            Spacer()
-        }
 
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationDestination(
+            isPresented: $presentUserProfile,
+            destination: {
+                UserProfile()
+            }
+        )
+        .navigationTitle("Home")
+        .navigationBarTitleDisplayMode(.inline)
 
     }
 }
@@ -50,10 +66,9 @@ struct Home: View {
     Home()
 }
 
-
 /*
- 
 
 
- 
+
+
  */

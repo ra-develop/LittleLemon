@@ -68,9 +68,6 @@ struct UserProfile: View {
             SecureField(
                 "Password", text: $password
             )
-//            .onTapGesture {
-//                password = ""
-//            }
             .onChange(of: password) {
                 // Add validation of password
                 print("password is change")
@@ -107,6 +104,7 @@ struct UserProfile: View {
         }
         .textFieldStyle(.roundedBorder)
         .padding()
+        .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Personal information")
         .toolbar {
             ToolbarItem(placement: .principal) {
